@@ -37,7 +37,7 @@ public class UserController{
                 // 如果匹配成功的处理逻辑
                 System.out.println("姓名格式正确");
             }
-
+            else throw new Abnormal("姓名格式不正确");
         } catch (Exception e) {
             e.printStackTrace();
             System.err.println("正则表达式语法错误: " + e.getMessage());
@@ -49,6 +49,7 @@ public class UserController{
                 // 如果匹配成功的处理逻辑
                 System.out.println("id格式正确");
             }
+            else throw new Abnormal("id格式不正确");
         } catch (Exception e) {
             e.printStackTrace();
             System.err.println("正则表达式语法错误: " + e.getMessage());
@@ -60,6 +61,7 @@ public class UserController{
                 // 如果匹配成功的处理逻辑
                 System.out.println("电话的格式正确");
             }
+            else throw new Abnormal("电话格式不正确");
         } catch (Exception e) {
             e.printStackTrace();
             System.err.println("正则表达式语法错误: " + e.getMessage());
@@ -74,6 +76,7 @@ public class UserController{
                 // 如果匹配成功的处理逻辑
                 System.out.println("地址的格式正确");
             }
+            else throw new Abnormal("地址格式不正确");
         } catch (Exception e) {
             e.printStackTrace();
             System.err.println("正则表达式语法错误: " + e.getMessage());
