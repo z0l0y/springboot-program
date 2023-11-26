@@ -1,0 +1,10 @@
+package com.hust.springbootmybatisquickstart.pojo;
+
+public class Abnormal extends Exception {
+    public Abnormal() {
+    }
+
+    public Abnormal(String message) {
+        super(message);
+    }
+}
