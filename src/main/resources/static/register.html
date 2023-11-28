@@ -19,39 +19,64 @@
     </style>
 </head>
 <body>
-    <div>
-<br><br>
-    </div>
+<div>
+    <br><br>
+</div>
 <div style="padding: 5px 0; font-weight: bold;display: flex; justify-content: center; align-items: center;">
     <label for="username">请输入您的用户名:</label>
 </div>
 <div style="display: flex; justify-content: center; align-items: center;">
-    <input type="text"  style="outline: none; border: none;border-radius: 20px; width: 300px;height:30px;padding: 5px 10px" id="username"><br>
+    <input type="text" style="outline: none; border: none;border-radius: 20px; width: 300px;height:30px;padding: 5px 10px" id="username"><br>
 </div>
-<div style="padding: 5px 0; font-weight: bold;display: flex; justify-content: center; align-items: center;">
-    <label for="password">请输入您的密码:</label>
+<div id="verify">
+    <div style="padding: 5px 0; font-weight: bold;display: flex; justify-content: center; align-items: center;">
+        <label for="password">请输入您的密码:</label>
+    </div>
+    <div @mouseenter="name" style="display: flex; justify-content: center; align-items: center;" >
+        <input type="password" v-model="password1" style="outline: none; border: none;border-radius: 20px; width: 300px;height:30px;padding: 5px 10px" id="password"><br>
+    </div>
+    <div style="padding: 5px 0; font-weight: bold;display: flex; justify-content: center; align-items: center;">
+        <label for="password">请再次输入您的密码:</label>
+    </div>
+    <div style="display: flex; justify-content: center; align-items: center;" >
+        <input type="password" v-model="password2" style="outline: none; border: none;border-radius: 20px; width: 300px;height:30px;padding: 5px 10px"><br>
+    </div>
+    <div style="padding: 5px 0; font-weight: bold;display: flex; justify-content: center; align-items: center;">
+        <label for="email">请输入您的邮箱:</label>
+    </div>
+    <div @mouseenter="examine" style="display: flex; justify-content: center; align-items: center;">
+        <input type="email"  style="outline: none;border-radius: 20px; border: none;width: 300px;height:30px;padding: 5px 10px" id="email"><br>
+    </div>
+    <div style="display: flex; justify-content: center; align-items: center;">
+        <strong>小tips：为了能更快的注册成功，您的邮箱不要写</strong>
+    </div>
+    <div style="display: flex; justify-content: center; align-items: center;">
+        <strong>错，要不然是注册不了的哦</strong>
+    </div>
+    <!-- 注册按钮 -->
+    <div style="display: flex; justify-content: center; align-items: center;">
+        <button id="registerButton" style="border-radius: 20px; width: 150px; padding: 5px 5px;font-size: large;color: black;">注册</button>
+    </div>
 </div>
-<div style="display: flex; justify-content: center; align-items: center;" >
-    <input type="password"  style="outline: none; border: none;border-radius: 20px; width: 300px;height:30px;padding: 5px 10px" id="password"><br>
-</div>
-<div style="padding: 5px 0; font-weight: bold;display: flex; justify-content: center; align-items: center;">
-    <label for="email">请输入您的邮箱:</label>
-</div>
-<div style="display: flex; justify-content: center; align-items: center;">
-    <input type="email"  style="outline: none;border-radius: 20px; border: none;width: 300px;height:30px;padding: 5px 10px" id="email"><br>
-</div>
-<div style="display: flex; justify-content: center; align-items: center;">
-    <strong>小tips：为了能更快的注册成功，您的邮箱不要写</strong>
-</div>
-<div style="display: flex; justify-content: center; align-items: center;">
-    <strong>错，要不然是注册不了的哦</strong>
-</div>
-<!-- 注册按钮 -->
-<div style="display: flex; justify-content: center; align-items: center;">
-    <button id="registerButton" style="border-radius: 20px; width: 150px; padding: 5px 5px;font-size: large;color: black;">注册</button>
-</div>
-
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
 <script>
+    new Vue({
+        el:'#verify',
+        data:{
+            password1:"",
+            password2: ""
+        },
+        methods: {
+            examine(){
+                if(this.password1 !== this.password2){
+                    alert("您的密码错误，请重新输入！");
+                } else if(this.password1 === "" || this.password2 === ""){
+                    alert("密码不能为空！");
+                }
+            }
+        },
+    })
+
     document.getElementById("registerButton").addEventListener("click", function() {
 // 获取用户输入的注册信息
         var username = document.getElementById("username").value;
